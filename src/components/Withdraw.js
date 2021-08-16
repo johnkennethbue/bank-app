@@ -1,9 +1,25 @@
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 export const WithdrawModal = ({showWithdrawModal, setShowWithdrawModal}) => {
     const closeWithdrawModal = (e) =>{
         e.preventDefault();
         setShowWithdrawModal(view => !view);
 }; 
+const MySwal = withReactContent(Swal)
+const confirmWithdraw = () => {MySwal.fire({
+    title: 'Do you want to save the changes?',
+    showCancelButton: true,
+    confirmButtonText: `Confirm`,
+    confirmButtonColor: "#FBBF24", 
+    denyButtonText: `Cancel`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire('Withdraw Successful', '', 'success' ,"#FBBF24" )
+    } else if (result.isDenied) {
+      Swal.fire('Transaction Cancelled', '', 'info')
+    }
+  })}
 
         return (
             <> {showWithdrawModal ? (          
@@ -21,11 +37,11 @@ export const WithdrawModal = ({showWithdrawModal, setShowWithdrawModal}) => {
             </div>
             <div>
 
-            <form class = "flex flex-col justify-center items-center">
+            <form method = "GET" class = "flex flex-col justify-center items-center">
                     <h1 class = "text-3xl">Enter the amount you want to withdraw:</h1>
                     <input class = "w-full h-12 pl-4 mt-12 border-2 border-black rounded-xl text-2xl outline-none " type = "number" placeholder = "Amount" required></input>
                     <div class = "flex flex-row justify-end items-end mt-16 ml-52 space-x-3.5 ">
-                    <button class = "w-full border-2 border-black rounded-xl px-4 py-2 bg-yellow-400">Confirm</button>
+                    <button onClick = {confirmWithdraw} class = "w-full border-2 border-black rounded-xl px-4 py-2 bg-yellow-400">Confirm</button>
                     <button onClick = {closeWithdrawModal} class = "w-full border-2 border-black rounded-xl px-4 py-2">Cancel</button>
                     </div>
             </form>

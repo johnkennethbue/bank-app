@@ -1,8 +1,26 @@
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 export const TransferModal = ({showTransferModal, setShowTransferModal}) => {
     const closeTransferModal = (e) =>{
         e.preventDefault();
         setShowTransferModal(view => !view);
 }; 
+
+const MySwal = withReactContent(Swal)
+const confirmTransfer = () => {MySwal.fire({
+    title: 'Do you want to save the changes?',
+    showCancelButton: true,
+    confirmButtonText: `Confirm`,
+    confirmButtonColor: "#FBBF24",   
+    denyButtonText: `Cancel`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire('Fund transfer successful', '', 'success')
+    } else if (result.isDenied) {
+      Swal.fire('Transaction Cancelled', '', 'info')
+    }
+  })}
     return ( 
     <> {showTransferModal ? (
         <div class="modal-container z-50 fixed w-full h-full top-0 left-0 flex items-center justify-center">
@@ -23,7 +41,7 @@ export const TransferModal = ({showTransferModal, setShowTransferModal}) => {
                         <h1 class = "text-3xl">Enter the amount you want to transfer:</h1>
                         <input class = "w-full h-12 pl-4 mt-12 border-2 border-black rounded-xl text-2xl outline-none " type = "number" placeholder = "Amount" required></input>
                         <div class = "flex flex-row justify-end items-end mt-16 ml-52 space-x-3.5 ">
-                        <button class = "w-full border-2 border-black rounded-xl px-4 py-2 bg-yellow-400">Confirm</button>
+                        <button onClick = {confirmTransfer} class = "w-full border-2 border-black rounded-xl px-4 py-2 bg-yellow-400">Confirm</button>
                         <button onClick = {closeTransferModal} class = "w-full border-2 border-black rounded-xl px-4 py-2">Cancel</button>
                         </div>
                 </form>
