@@ -1,11 +1,14 @@
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import React, { Component, useState } from "react";
+
 
 export const WithdrawModal = ({showWithdrawModal, setShowWithdrawModal}) => {
     const closeWithdrawModal = (e) =>{
         e.preventDefault();
         setShowWithdrawModal(view => !view);
 }; 
+
 const MySwal = withReactContent(Swal)
 const confirmWithdraw = () => {MySwal.fire({
     title: 'Do you want to save the changes?',

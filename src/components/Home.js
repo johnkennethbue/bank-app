@@ -1,31 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import Deposit from './deposit.png';
 import Withdraw from './withdraw.png';
 import Transfer from './transfer.png';
 import userIcon from './userIcon.png';
 import { WithdrawModal } from './Withdraw.js';
-import { DepositModal } from './Deposit.js';
+import  DepositModal  from './Deposit';
 import { TransferModal } from './Transfer.js';
+import {Link} from "react-router-dom";
 
 
-function Home () {
 
-        const [showWithdrawModal, setShowWithdrawModal] = useState(false);
-        const openWithdrawModal = (e) =>{
-                e.preventDefault();
-                setShowWithdrawModal(view => !view);
-        };  
-        const [showDepositModal, setShowDepositModal] = useState(false);
-        const openDepositModal = (e) =>{
-            e.preventDefault();
-            setShowDepositModal(view => !view);
-        }
-        const [showTransferModal, setShowTransferModal] = useState(false);
-        const openTransferModal = (e) =>{
-            e.preventDefault();
-            setShowTransferModal(view => !view);
-        }
+const Home = ({showDepositModal, setShowDepositModal}) => {
+    console.log(setShowDepositModal)
 
+const [balanceState, setBalanceState] = useState('$1,000');
+
+const Balance = () => {
+    return (
+    <div className = 'parent'>
+    <div>{balanceState}</div>
+    <DepositModal onChange={(value) => setBalanceState(value)} />
+    </div>
+    )
+}
+
+
+const [showWithdrawModal, setShowWithdrawModal] = useState(false);
+const openWithdrawModal = (e) =>{
+        e.preventDefault();
+        setShowWithdrawModal(view => !view);
+    };  
+// const [showDepositModal, setShowDepositModal] = useState(true);
+const openDepositModal = (e) =>{
+        e.preventDefault();
+        setShowDepositModal(view => !view);
+    }
+const [showTransferModal, setShowTransferModal] = useState(false);
+const openTransferModal = (e) =>{
+        e.preventDefault();
+        setShowTransferModal(view => !view);
+    }
     return (
 
 <div class = "flex w-full justify-center items-center text-black">
@@ -43,7 +57,7 @@ function Home () {
             </div>
 
             <h1 class = "text-2xl font-normal mt-20 ml-4 mb-8 sm:text-4xl sm:justify-right sm:ml-24 ">Account Balance:</h1>
-            <div class = "text-4xl flex justify-right ml-4 sm:text-5xl sm:ml-24 border-transparent w-3/4  h-12 text-black font-bold">$124,395.68 USD</div>
+            <div class = "text-4xl flex justify-right ml-4 sm:text-5xl sm:ml-24 border-transparent w-3/4  h-12 text-black font-bold"><Balance /></div>
 
         <div class = "flex justify-center flex-col space-x-5 mb:8 sm:flex-row sm:mt-4 md:flex-row mx-8 my-8 z-1">
            <div class = "flex justify-right">
@@ -79,5 +93,6 @@ function Home () {
 </div>
     )
 };
+
 
 export default Home;

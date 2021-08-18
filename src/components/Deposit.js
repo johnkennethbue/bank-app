@@ -1,25 +1,35 @@
 import Swal from 'sweetalert2'
+import React from 'react';
 import withReactContent from 'sweetalert2-react-content'
+import { useState } from 'react';
+ 
 
-export const DepositModal = ({showDepositModal, setShowDepositModal}) => {
-    const closeDepositModal = (e) =>{
+const DepositModal = (props) => {
+
+const [showDepositModal, setShowDepositModal] = useState(true);
+const closeDepositModal = (e) =>{
         e.preventDefault();
         setShowDepositModal(view => !view);
-}; 
-const MySwal = withReactContent(Swal)
-const confirmDeposit = () => {MySwal.fire({
-    title: 'Do you want to save the changes?',
-    showCancelButton: true,
-    confirmButtonText: `Confirm`,
-    confirmButtonColor: "#FBBF24", 
-    denyButtonText: `Cancel`,
-  }).then((result) => {
-    if (result.isConfirmed) {
-      Swal.fire('Funds has been posted to your account', '', 'success')
-    } else if (result.isDenied) {
-      Swal.fire('Transaction Cancelled', '', 'info')
     }
-  })}
+
+    console.log(props)
+
+    
+// const MySwal = withReactContent(Swal)
+// const confirmDeposit = () => {MySwal.fire({
+//     title: 'Do you want to save the changes?',
+//     showCancelButton: true,
+//     confirmButtonText: `Confirm`,
+//     confirmButtonColor: "#FBBF24", 
+//     denyButtonText: `Cancel`,
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       Swal.fire('Funds has been posted to your account', '', 'success')
+//     } else if (result.isDenied) {
+//       Swal.fire('Transaction Cancelled', '', 'info')
+//     }
+//   })}
+
     return (
     <> {showDepositModal ? (
         <div class="modal-container z-50 fixed w-full h-full top-0 left-0 flex items-center justify-center">
@@ -36,14 +46,18 @@ const confirmDeposit = () => {MySwal.fire({
                 </div>
                 <div>
     
-                <form class = "flex flex-col justify-center items-center">
+                <div class = "flex flex-col justify-center items-center">
                         <h1 class = "text-3xl">Enter the amount you want to deposit:</h1>
-                        <input class = "w-full h-12 pl-4 mt-12 border-2 border-black rounded-xl text-2xl outline-none " type = "number" placeholder = "Amount" required></input>
+                        <input class = "w-full h-12 pl-4 mt-12 border-2 border-black rounded-xl text-2xl outline-none" 
+                        type = "text" placeholder = "Amount"
+                        onChange = {event => props.onChange(event.target.value)}
+                        />
+
                         <div class = "flex flex-row justify-end items-end mt-16 ml-52 space-x-3.5 ">
-                        <button onClick = {confirmDeposit} class = "w-full border-2 border-black rounded-xl px-4 py-2 bg-yellow-400">Confirm</button>
+                        <button class = "w-full border-2 border-black rounded-xl px-4 py-2 bg-yellow-400">Confirm</button>
                         <button onClick = {closeDepositModal} class = "w-full border-2 border-black rounded-xl px-4 py-2">Cancel</button>
                         </div>
-                </form>
+                </div>
                 </div>
             </div>
         </div>
@@ -51,3 +65,4 @@ const confirmDeposit = () => {MySwal.fire({
         ) : null} </>
     )
     };
+    export default DepositModal;
