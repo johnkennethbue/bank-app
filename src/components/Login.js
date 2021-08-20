@@ -1,8 +1,25 @@
-import React, { useState } from "react";
-import {Link} from "react-router-dom";
+import React, { useState, useCallback } from "react";
+import Swal from 'sweetalert2'
+import {useHistory} from 'react-router-dom';
 
 
-function Login (){
+const Login = () => {
+
+    const [userName] = useState("johnkennethbue")
+    const [passWord] = useState("12345")
+    const [userNameInput, setUserNameInput] = useState("")
+    const [passWordInput, setPassWordInput] = useState("")
+
+    const history = useHistory();
+    const handleLogInClick = useCallback(() => history.push('/home'), [history]);
+    
+    const logInFunction = () => {
+        if (userName !== userNameInput || passWord !== passWordInput){
+            Swal.fire("Incorrect Username/Password, please try again.", '', 'error')
+        } else {
+            handleLogInClick();
+        }
+    }
 
     return (
     <div class="relative min-h-screen flex ">
@@ -12,7 +29,7 @@ function Login (){
         <div class="w-full  max-w-md z-10">
           <div class="sm:text-4xl xl:text-5xl font-bold leading-tight mb-6">Online banking has never been this easier...</div>
           <div class="sm:text-sm xl:text-xl text-white-200 font-light"> By simply logging in your account,
-          you can deposit, withdraw, and transfer funds into other accounts by just a few clicks! If you are
+          you can deposit, withdraw, and manage your other accounts just a few clicks! If you are
           a new user, just click the Sign Up button below and register for free!
           Feel the freedom of managing your savings easily, and do your transactions safely and securely
           with My Bank App.
@@ -36,21 +53,27 @@ function Login (){
             <h1 class = "text-center pb-3 text-3xl">Welcome to My Bank App!</h1>
             <h3 class = "text-center pb-10 font-light text-2xl">Please log in to proceed</h3>
 
-            <form action="" method="GET">
+            <div>
             <div id = "login-input-userName">
-                <input class =  "w-full mt-14 content-center mr-40 text-base px-4 py-2 border-b-2 rounded-xl border-gray-500 focus:outline-none focus:border-yellow-700" type = "text" placeholder = 'Username' required>
-                </input>
+                <input class =  "w-full mt-14 content-center mr-40 text-base px-4 py-2 border-b-2 rounded-xl border-gray-500 focus:outline-none focus:border-yellow-700" 
+                type = "text"
+                onChange = {e => setUserNameInput(e.target.value)}
+                placeholder = 'Username' 
+                required />
             </div>
 
             <div className = "login-input-passWord">
-                <input class = "w-full mt-5 content-center mr-40 text-base px-4 py-2 border-b-2 rounded-xl border-gray-500 focus:outline-none focus:border-yellow-700" type = "password" placeholder = 'Password' required>
+                <input class = "w-full mt-5 content-center mr-40 text-base px-4 py-2 border-b-2 rounded-xl border-gray-500 focus:outline-none focus:border-yellow-700" 
+                type = "password" 
+                onChange = {e => setPassWordInput(e.target.value)}
+                placeholder = 'Password' 
+                required>
                 </input>
             </div>
-            <Link to = '/home'>
-            <button class= "w-full mt-20 flex justify-center bg-gradient-to-r from-yellow-500 to-yellow-700 hover:bg-gradient-to-r hover:from-yellow-700 hover:to-yellow-500 text-gray-100 p-4  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500">
+            <button onClick = {logInFunction} class= "w-full mt-20 flex justify-center bg-gradient-to-r from-yellow-500 to-yellow-700 hover:bg-gradient-to-r hover:from-yellow-700 hover:to-yellow-500 text-gray-100 p-4  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500">
                    Log in
             </button>
-            </Link>
+           
 
             <h2 class = "text-center pt-10 pb-4 text-xl">Don't have an account?</h2>
             <a href = "_blank" class = "ml-28 text-blue-500 text-xl  hover:underline">
@@ -59,7 +82,7 @@ function Login (){
             <footer>
             <p class = "text-right pt-24 font-thin text-sm"> ⓒ John Kenneth Bue @ Github/AvionSchool</p>
             </footer>
-            </form>
+            </div>
         </div>
         </div> 
     )
