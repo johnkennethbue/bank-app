@@ -1,5 +1,4 @@
 import Swal from 'sweetalert2'
-import React from 'react';
 import withReactContent from 'sweetalert2-react-content'
 import { useState, useEffect } from 'react';
  
@@ -34,10 +33,10 @@ const confirmDeposit = () => {MySwal.fire({
       }
      else if (result.isConfirmed && setDeposit > 0) {
       props.deposit();
-      Swal.fire('Funds has been posted to your account', '', 'success')
+      Swal.fire('Deposit successful!', 'Funds has been posted to your account.', 'success')
       setDepositState(0) 
 
-    }  else if (result.isDenied) {
+    } else if (result.isDenied) {
       Swal.fire('Transaction Cancelled', '', 'info')
     }
   })}

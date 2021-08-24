@@ -3,7 +3,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
 
-export const WithdrawModal = (props) => {
+const WithdrawModal = (props) => {
 
 const [withdrawAmount, setWithdrawAmount] = useState(0)
 
@@ -30,7 +30,7 @@ const confirmWithdraw = () => {MySwal.fire({
 
   } else if (result.isConfirmed && props.newBalance >= props.oldBalance && props.newBalance > 0) {
         props.withdraw();
-        Swal.fire('Withdraw Successful', '', 'success');
+        Swal.fire('Withdraw Successful!', 'Funds has been immediately deducted to your account.', 'success');
         setWithdrawAmount(0);
         
   } else if (result.isConfirmed && withdrawAmount === 0) {
@@ -87,3 +87,4 @@ const confirmWithdraw = () => {MySwal.fire({
             ): null} </>
             )
         };
+export default WithdrawModal;

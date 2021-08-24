@@ -1,26 +1,37 @@
-import React, { useState, useCallback } from "react";
+import { useState, useCallback} from "react";
 import Swal from 'sweetalert2'
-import {useHistory} from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import SignUpForm from './SignUpForm';
 
 
 const Login = () => {
 
-    const [userName] = useState("johnkennethbue")
-    const [passWord] = useState("12345")
-    const [userNameInput, setUserNameInput] = useState("")
-    const [passWordInput, setPassWordInput] = useState("")
+    const [firstName, setFirstName] = useState("");
+    const [middleName, setMiddleName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [userName, setUserName] = useState("");
+    const [passWord, setPassWord] = useState("");
+    const [userNameInput, setUserNameInput] = useState("");
+    const [passWordInput, setPassWordInput] = useState("");
 
     const history = useHistory();
     const handleLogInClick = useCallback(() => history.push('/home'), [history]);
     
     const logInFunction = () => {
-        if (userName !== userNameInput || passWord !== passWordInput){
+        if (userName !== userNameInput || passWord !== passWordInput ||
+          userNameInput === "" || passWordInput === ""){
             Swal.fire("Incorrect Username/Password, please try again.", '', 'error')
         } else {
             handleLogInClick();
         }
     }
-
+    
+    const [openSignUp, setOpenSignUp] = useState(false);
+    const openSignUpForm = (e) =>{
+        e.preventDefault();
+        setOpenSignUp(view => !view);
+    };  
+    
     return (
     <div class="relative min-h-screen flex ">
     <div class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0 bg-white">
@@ -73,12 +84,26 @@ const Login = () => {
             <button onClick = {logInFunction} class= "w-full mt-20 flex justify-center bg-gradient-to-r from-yellow-500 to-yellow-700 hover:bg-gradient-to-r hover:from-yellow-700 hover:to-yellow-500 text-gray-100 p-4  rounded-full tracking-wide font-semibold  shadow-lg cursor-pointer transition ease-in duration-500">
                    Log in
             </button>
+         
            
-
             <h2 class = "text-center pt-10 pb-4 text-xl">Don't have an account?</h2>
-            <a href = "_blank" class = "ml-28 text-blue-500 text-xl  hover:underline">
+            <button onClick = {openSignUpForm} class = "ml-28 text-blue-500 text-2xl  hover:underline">
                 Sign up here
-            </a>
+            </button>
+            <SignUpForm 
+                openSignUp = {openSignUp} 
+                setOpenSignUp = {setOpenSignUp}
+                firstName = {setFirstName}
+                middleName = {setMiddleName}
+                lastName = {setLastName}
+                userName = {setUserName}
+                passWord = {setPassWord}
+                firstNameDisplay = {firstName}
+                middleNameDisplay = {middleName}
+                lastNameDisplay = {lastName}
+                userNameDisplay = {userName}
+                passWordDisplay = {passWord}
+                />
             <footer>
             <p class = "text-right pt-24 font-thin text-sm"> ⓒ John Kenneth Bue @ Github/AvionSchool</p>
             </footer>
@@ -87,4 +112,5 @@ const Login = () => {
         </div> 
     )
 }
+
 export default Login;
