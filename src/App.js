@@ -14,7 +14,7 @@ render(){
     <div className = "App">
     <Router>
     <Switch>
-      <Route path = "/crab" exact component = {Login} />
+      <Route path = "/bank-app" exact component = {Login} />
       <Route path = "/home" exact component = {Home} />
     </Switch>
     </Router>

@@ -39,7 +39,7 @@ const openSwitchAccountModal = (e) =>{
     }
 
 const history = useHistory();
-const handleLogOut = useCallback(() => history.push('/crab'), [history]);
+const handleLogOut = useCallback(() => history.push('/bank-app'), [history]);
 
 const MySwal = withReactContent(Swal);
 const confirmLogOut = () => {MySwal.fire({
