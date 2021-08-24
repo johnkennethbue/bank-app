@@ -1,24 +1,26 @@
 {
   "files": {
-    "main.css": "/crab/static/css/main.49191cbb.chunk.css",
-    "main.js": "/crab/static/js/main.070710c2.chunk.js",
-    "main.js.map": "/crab/static/js/main.070710c2.chunk.js.map",
-    "runtime-main.js": "/crab/static/js/runtime-main.95ae55b0.js",
-    "runtime-main.js.map": "/crab/static/js/runtime-main.95ae55b0.js.map",
-    "static/js/2.47757dff.chunk.js": "/crab/static/js/2.47757dff.chunk.js",
-    "static/js/2.47757dff.chunk.js.map": "/crab/static/js/2.47757dff.chunk.js.map",
-    "static/js/3.bf60c7ab.chunk.js": "/crab/static/js/3.bf60c7ab.chunk.js",
-    "static/js/3.bf60c7ab.chunk.js.map": "/crab/static/js/3.bf60c7ab.chunk.js.map",
-    "index.html": "/crab/index.html",
-    "static/css/main.49191cbb.chunk.css.map": "/crab/static/css/main.49191cbb.chunk.css.map",
-    "static/js/2.47757dff.chunk.js.LICENSE.txt": "/crab/static/js/2.47757dff.chunk.js.LICENSE.txt",
-    "static/media/deposit.33d1bc7b.png": "/crab/static/media/deposit.33d1bc7b.png",
-    "static/media/transfer.375eb236.png": "/crab/static/media/transfer.375eb236.png"
+    "main.css": "/bank-app/static/css/main.a292384d.chunk.css",
+    "main.js": "/bank-app/static/js/main.2a34a1d7.chunk.js",
+    "main.js.map": "/bank-app/static/js/main.2a34a1d7.chunk.js.map",
+    "runtime-main.js": "/bank-app/static/js/runtime-main.b1ecc3eb.js",
+    "runtime-main.js.map": "/bank-app/static/js/runtime-main.b1ecc3eb.js.map",
+    "static/js/2.f15c9dbe.chunk.js": "/bank-app/static/js/2.f15c9dbe.chunk.js",
+    "static/js/2.f15c9dbe.chunk.js.map": "/bank-app/static/js/2.f15c9dbe.chunk.js.map",
+    "static/js/3.3f038839.chunk.js": "/bank-app/static/js/3.3f038839.chunk.js",
+    "static/js/3.3f038839.chunk.js.map": "/bank-app/static/js/3.3f038839.chunk.js.map",
+    "index.html": "/bank-app/index.html",
+    "static/css/main.a292384d.chunk.css.map": "/bank-app/static/css/main.a292384d.chunk.css.map",
+    "static/js/2.f15c9dbe.chunk.js.LICENSE.txt": "/bank-app/static/js/2.f15c9dbe.chunk.js.LICENSE.txt",
+    "static/media/deposit.33d1bc7b.png": "/bank-app/static/media/deposit.33d1bc7b.png",
+    "static/media/history.51113d0b.png": "/bank-app/static/media/history.51113d0b.png",
+    "static/media/logout.705224cf.png": "/bank-app/static/media/logout.705224cf.png",
+    "static/media/withdraw.b90e506b.png": "/bank-app/static/media/withdraw.b90e506b.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.95ae55b0.js",
-    "static/js/2.47757dff.chunk.js",
-    "static/css/main.49191cbb.chunk.css",
-    "static/js/main.070710c2.chunk.js"
+    "static/js/runtime-main.b1ecc3eb.js",
+    "static/js/2.f15c9dbe.chunk.js",
+    "static/css/main.a292384d.chunk.css",
+    "static/js/main.2a34a1d7.chunk.js"
   ]
 }
