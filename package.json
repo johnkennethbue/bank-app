@@ -1,6 +1,6 @@
 {
-  "homepage": "http://johnkennethbue.github.io/crab",
-  "name": "crab",
+  "homepage": "https://johnkennethbue.github.io/bank-app/",
+  "name": "bank-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
